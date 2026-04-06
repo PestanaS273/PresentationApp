@@ -32,6 +32,19 @@ const projects = [
     github: 'https://github.com',
   },
   {
+    id: 'keysolutions',
+    title: 'KeySolutions SAC',
+    category: 'Web / Corporate',
+    description:
+      'Production corporate platform for a company selling banking & hospitality solutions — thermal paper, financial cards, POS accessories, and hotel systems. Live in production.',
+    tags: ['React', 'Vite', 'Tailwind CSS'],
+    accent: '#F59E0B',
+    accentRgb: '245, 158, 11',
+    size: 'medium',
+    year: '2024',
+    live: 'https://keysolutionssac.com/',
+  },
+  {
     id: 'hck-rental',
     title: 'HCK Rental',
     category: 'Web / Frontend',

@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const links = [
+const hashLinks = [
   { label: 'About',    href: '#about'    },
   { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
@@ -14,6 +16,8 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -40,28 +44,45 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        <Link
+          href="/"
           className="font-display font-800 text-xl tracking-tight gradient-text cursor-pointer"
           style={{ fontFamily: 'var(--font-outfit)' }}
         >
           pestana<span className="text-white/30">.</span>dev
-        </button>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNav(link.href)}
-              className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 cursor-pointer tracking-wide"
-              style={{ fontFamily: 'var(--font-inter)' }}
-            >
-              {link.label}
-            </button>
-          ))}
+          {isHome
+            ? hashLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNav(link.href)}
+                  className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 cursor-pointer tracking-wide"
+                  style={{ fontFamily: 'var(--font-inter)' }}
+                >
+                  {link.label}
+                </button>
+              ))
+            : (
+                <Link
+                  href="/"
+                  className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 tracking-wide"
+                  style={{ fontFamily: 'var(--font-inter)' }}
+                >
+                  ← Portfolio
+                </Link>
+              )}
+          <Link
+            href="/cv"
+            className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 tracking-wide"
+            style={{ fontFamily: 'var(--font-inter)' }}
+          >
+            CV
+          </Link>
           <button
-            onClick={() => handleNav('#contact')}
+            onClick={() => isHome ? handleNav('#contact') : window.location.href = '/#contact'}
             className="text-sm px-5 py-2 rounded-full border border-[rgba(108,99,255,0.5)] text-[#6C63FF] hover:bg-[rgba(108,99,255,0.1)] transition-all duration-200 cursor-pointer"
           >
             Hire me
@@ -103,18 +124,37 @@ export default function Navbar() {
             className="md:hidden overflow-hidden bg-[rgba(5,5,8,0.95)] backdrop-blur-xl border-b border-white/[0.06]"
           >
             <nav className="px-6 py-6 flex flex-col gap-5">
-              {links.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNav(link.href)}
-                  className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors cursor-pointer"
-                  style={{ fontFamily: 'var(--font-outfit)' }}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {isHome
+                ? hashLinks.map((link) => (
+                    <button
+                      key={link.href}
+                      onClick={() => handleNav(link.href)}
+                      className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors cursor-pointer"
+                      style={{ fontFamily: 'var(--font-outfit)' }}
+                    >
+                      {link.label}
+                    </button>
+                  ))
+                : (
+                    <Link
+                      href="/"
+                      onClick={() => setOpen(false)}
+                      className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors"
+                      style={{ fontFamily: 'var(--font-outfit)' }}
+                    >
+                      ← Portfolio
+                    </Link>
+                  )}
+              <Link
+                href="/cv"
+                onClick={() => setOpen(false)}
+                className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors"
+                style={{ fontFamily: 'var(--font-outfit)' }}
+              >
+                CV
+              </Link>
               <button
-                onClick={() => handleNav('#contact')}
+                onClick={() => isHome ? handleNav('#contact') : window.location.href = '/#contact'}
                 className="mt-2 text-center py-3 rounded-full border border-[rgba(108,99,255,0.5)] text-[#6C63FF] cursor-pointer"
               >
                 Hire me
