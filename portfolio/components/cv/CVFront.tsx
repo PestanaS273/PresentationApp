@@ -72,9 +72,9 @@ export default function CVFront() {
       {/* ── Expériences ────────────────────────────────── */}
       <Section title="Expériences Professionnelles">
         <Job
-          title="Alternance Ingénieur Fullstack & DevOps"
+          title="Ingénieur Fullstack & DevOps"
           company="Disneyland Paris"
-          period="2023 – 2025"
+          period="2023 – Présent"
           items={[
             'Développement et gestion agile d\'applications sur mesure — département Spectacle.',
             'React.js, Node.js, Java Spring Boot, Python, Docker, Gitlab, Jenkins.',

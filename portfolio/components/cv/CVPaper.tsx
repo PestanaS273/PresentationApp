@@ -5,6 +5,7 @@ import { motion, useSpring } from 'framer-motion'
 import { RotateCcw, ChevronDown } from 'lucide-react'
 import CVFront from './CVFront'
 import CVBack from './CVBack'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const SHADOW = `
   0 1px 2px rgba(0,0,0,0.08),
@@ -18,6 +19,7 @@ const SHADOW = `
 export default function CVPaper() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [flipped, setFlipped] = useState(false)
+  const { t } = useLanguage()
 
   const rotX = useSpring(0, { stiffness: 120, damping: 28, mass: 0.6 })
   const rotY = useSpring(0, { stiffness: 120, damping: 28, mass: 0.6 })
@@ -155,20 +157,18 @@ export default function CVPaper() {
           }}
         >
           <RotateCcw size={16} />
-          {flipped ? 'Voir le recto' : 'Retourner la page'}
+          {flipped ? t('cv.unflip') : t('cv.flip')}
         </motion.button>
 
         <motion.button
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          onClick={() =>
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-          }
+          onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
           className="flex items-center gap-2 px-6 py-3 rounded-full text-sm text-[#8A8F98] cursor-pointer border border-white/10 hover:border-white/20 hover:text-white transition-colors"
           style={{ fontFamily: 'var(--font-inter)' }}
         >
           <ChevronDown size={16} />
-          Bas de page
+          {t('cv.scroll_down')}
         </motion.button>
       </div>
 

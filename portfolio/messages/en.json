@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
+    "cv": "CV",
+    "hire": "Hire me",
+    "back": "← Portfolio"
+  },
+  "hero": {
+    "badge": "Available for new projects",
+    "current_role": "Systems Engineer @ Disneyland Paris",
+    "roles": ["Backend Architect", "Full-Stack Developer", "Systems Integrator", "E-commerce Builder"],
+    "description": "I build complex web systems, scalable backends, and intelligent automations that turn ideas into products clients can rely on.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in touch",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "label": "About",
+    "headline": "I don't build <accent>pages</accent>. I build <muted>systems</muted>.",
+    "bio1": "With deep experience in backend architecture, event-driven systems, and full-stack development, I help businesses build software that actually scales — from the database layer to the UI.",
+    "bio2": "Whether it's a microservices platform processing thousands of events, a custom e-commerce system, or an automation that saves 20 hours a week — I treat every project as an engineering problem worth solving properly.",
+    "open": "$ currently open to freelance & contracts",
+    "stats": {
+      "projects": "Projects built",
+      "technologies": "Technologies mastered",
+      "continents": "Continents served",
+      "focus": "Client focus"
+    }
+  },
+  "services": {
+    "label": "What I do",
+    "title": "Services",
+    "subtitle": "Specialized in the intersection of clean architecture and pragmatic delivery.",
+    "web": {
+      "subtitle": "From concept to production",
+      "title": "Web Applications",
+      "description": "Full-stack web applications built with modern frameworks. Complex data flows, real-time features, authentication systems, and scalable architectures that grow with your business.",
+      "features": ["Next.js / React / Vue", "Node.js / Spring Boot / FastAPI", "SQL & NoSQL databases", "REST & event-driven APIs"]
+    },
+    "ecommerce": {
+      "subtitle": "Sell at scale",
+      "title": "E-commerce Systems",
+      "description": "Custom e-commerce platforms with payment processing, inventory management, order flows, and the performance required to handle traffic spikes without breaking.",
+      "features": ["Stripe / payment integrations", "Inventory & order management", "Custom storefronts", "Analytics & reporting"]
+    },
+    "automation": {
+      "subtitle": "Systems that talk to each other",
+      "title": "Automations & Integrations",
+      "description": "Connect your existing tools and automate repetitive workflows. From Kafka-driven microservices to simple API bridges — built to fit your stack, not replace it.",
+      "features": ["Event-driven pipelines", "Third-party API integrations", "Scheduled jobs & workers", "Microservices & SOA"]
+    }
+  },
+  "projects": {
+    "label": "Work",
+    "title": "Selected Projects",
+    "subtitle": "A selection of systems, products, and experiments.",
+    "code": "Code",
+    "live": "Live demo"
+  },
+  "stack": {
+    "label": "Technology",
+    "title": "My Stack",
+    "description": "Tools and technologies I use to build production-ready software."
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Let's build <accent>something</accent> great together.",
+    "description": "I'm currently available for freelance projects and consulting. Whether you need a full product built or a complex system integrated — let's talk.",
+    "copy_hint": "Copy email",
+    "copied": "Copied!",
+    "linkedin": "LinkedIn",
+    "footer": "Built with Next.js & ♥"
+  },
+  "cv": {
+    "label": "Curriculum Vitae",
+    "hint": "Hover to tilt · Click to flip",
+    "flip": "Flip page",
+    "unflip": "See front",
+    "scroll_down": "Scroll down"
+  }
+}

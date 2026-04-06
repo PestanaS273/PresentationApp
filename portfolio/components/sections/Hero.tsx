@@ -4,18 +4,12 @@ import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { ArrowDown, ExternalLink } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
   loading: () => null,
 })
-
-const roles = [
-  'Backend Architect',
-  'Full-Stack Developer',
-  'Systems Integrator',
-  'E-commerce Builder',
-]
 
 function useTypewriter(words: string[], speed = 80, pause = 2000) {
   const [displayed, setDisplayed] = useState('')
@@ -24,7 +18,8 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
   const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
-    const current = words[wordIdx]
+    if (!words.length) return
+    const current = words[wordIdx % words.length]
     if (!deleting && charIdx < current.length) {
       const t = setTimeout(() => setCharIdx((c) => c + 1), speed)
       return () => clearTimeout(t)
@@ -44,45 +39,64 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
   }, [charIdx, deleting, wordIdx, words, speed, pause])
 
   useEffect(() => {
-    setDisplayed(words[wordIdx].slice(0, charIdx))
+    if (!words.length) return
+    setDisplayed(words[wordIdx % words.length].slice(0, charIdx))
   }, [charIdx, wordIdx, words])
 
   return displayed
 }
 
 export default function Hero() {
+  const { t, tArray } = useLanguage()
+  const roles = tArray('hero.roles')
   const role = useTypewriter(roles)
 
   return (
     <section className="relative min-h-dvh flex items-center justify-center overflow-hidden">
-      {/* 3D canvas — full background */}
+      {/* 3D canvas */}
       <div className="absolute inset-0 z-0">
         <HeroScene />
       </div>
 
-      {/* Ambient gradient blobs */}
-      <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20 pointer-events-none z-0"
-        style={{ background: 'radial-gradient(circle, #6C63FF, transparent)' }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[100px] opacity-15 pointer-events-none z-0"
-        style={{ background: 'radial-gradient(circle, #00D4FF, transparent)' }}
-      />
+      {/* Ambient blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20 pointer-events-none z-0" style={{ background: 'radial-gradient(circle, #6C63FF, transparent)' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[100px] opacity-15 pointer-events-none z-0" style={{ background: 'radial-gradient(circle, #00D4FF, transparent)' }} />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Status badge */}
+
+        {/* Current role badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full"
+          style={{
+            background: 'rgba(108,99,255,0.08)',
+            border: '1px solid rgba(108,99,255,0.2)',
+          }}
+        >
+          <span
+            className="text-xs font-medium"
+            style={{ fontFamily: 'var(--font-mono)', color: '#6C63FF' }}
+          >
+            {t('hero.current_role')}
+          </span>
+        </motion.div>
+
+        {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass border border-[rgba(108,99,255,0.3)]"
+          className="flex justify-center mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-[#00D4FF] animate-pulse-dot" />
-          <span className="text-sm text-[#8A8F98]" style={{ fontFamily: 'var(--font-inter)' }}>
-            Available for new projects
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[rgba(0,212,255,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-[#00D4FF] animate-pulse-dot" />
+            <span className="text-sm text-[#8A8F98]" style={{ fontFamily: 'var(--font-inter)' }}>
+              {t('hero.badge')}
+            </span>
+          </div>
         </motion.div>
 
         {/* Name */}
@@ -104,10 +118,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="h-12 flex items-center justify-center mb-6"
         >
-          <span
-            className="text-xl md:text-3xl font-medium text-[#8A8F98]"
-            style={{ fontFamily: 'var(--font-outfit)' }}
-          >
+          <span className="text-xl md:text-3xl font-medium text-[#8A8F98]" style={{ fontFamily: 'var(--font-outfit)' }}>
             {role}
             <span className="inline-block w-0.5 h-7 bg-[#6C63FF] ml-1 animate-pulse align-middle" />
           </span>
@@ -121,8 +132,7 @@ export default function Hero() {
           className="text-base md:text-lg text-[#8A8F98] max-w-xl mx-auto mb-12 leading-relaxed"
           style={{ fontFamily: 'var(--font-inter)' }}
         >
-          I build complex web systems, scalable backends, and intelligent automations
-          that turn ideas into products clients can rely on.
+          {t('hero.description')}
         </motion.p>
 
         {/* CTAs */}
@@ -133,34 +143,23 @@ export default function Hero() {
           className="flex items-center justify-center gap-4 flex-wrap"
         >
           <button
-            onClick={() => {
-              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
-            }}
+            onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="group relative px-8 py-3.5 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
             style={{ fontFamily: 'var(--font-outfit)' }}
           >
-            {/* Animated gradient background */}
-            <span
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: 'linear-gradient(135deg, #6C63FF 0%, #00D4FF 100%)',
-                boxShadow: '0 0 30px rgba(108,99,255,0.5)',
-              }}
-            />
+            <span className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(135deg, #6C63FF 0%, #00D4FF 100%)', boxShadow: '0 0 30px rgba(108,99,255,0.5)' }} />
             <span className="relative flex items-center gap-2">
-              View Projects
+              {t('hero.cta_projects')}
               <ExternalLink size={15} />
             </span>
           </button>
 
           <button
-            onClick={() => {
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-            }}
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-3.5 rounded-full font-semibold text-[#EDEDEF] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 cursor-pointer"
             style={{ fontFamily: 'var(--font-outfit)' }}
           >
-            Get in touch
+            {t('hero.cta_contact')}
           </button>
         </motion.div>
       </div>
@@ -174,21 +173,15 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#8A8F98] hover:text-white transition-colors cursor-pointer z-10"
       >
         <span className="text-xs tracking-widest uppercase" style={{ fontFamily: 'var(--font-inter)' }}>
-          Scroll
+          {t('hero.scroll')}
         </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
           <ArrowDown size={18} />
         </motion.div>
       </motion.button>
 
       {/* Bottom fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to top, #050508, transparent)' }}
-      />
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10" style={{ background: 'linear-gradient(to top, #050508, transparent)' }} />
     </section>
   )
 }

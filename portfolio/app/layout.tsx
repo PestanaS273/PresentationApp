@@ -3,6 +3,7 @@ import { Outfit, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
 import Navbar from '@/components/Navbar'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -44,10 +45,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <SmoothScroll>
-          <Navbar />
-          {children}
-        </SmoothScroll>
+        <LanguageProvider>
+          <SmoothScroll>
+            <Navbar />
+            {children}
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   )

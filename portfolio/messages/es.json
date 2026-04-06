@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "stack": "Stack",
+    "contact": "Contacto",
+    "cv": "CV",
+    "hire": "Contrátame",
+    "back": "← Portfolio"
+  },
+  "hero": {
+    "badge": "Disponible para nuevos proyectos",
+    "current_role": "Ing. de Sistemas @ Disneyland Paris",
+    "roles": ["Arquitecto Backend", "Desarrollador Full-Stack", "Integrador de Sistemas", "Desarrollador E-commerce"],
+    "description": "Construyo sistemas web complejos, backends escalables y automatizaciones inteligentes que convierten ideas en productos en los que los clientes confían.",
+    "cta_projects": "Ver proyectos",
+    "cta_contact": "Contáctame",
+    "scroll": "Deslizar"
+  },
+  "about": {
+    "label": "Sobre mí",
+    "headline": "No construyo <accent>páginas</accent>. Construyo <muted>sistemas</muted>.",
+    "bio1": "Con amplia experiencia en arquitectura backend, sistemas event-driven y desarrollo full-stack, ayudo a empresas a construir software que escala de verdad — desde la base de datos hasta la interfaz.",
+    "bio2": "Ya sea una plataforma de microservicios procesando miles de eventos, un sistema e-commerce a medida, o una automatización que ahorra 20 horas a la semana — trato cada proyecto como un problema de ingeniería que merece resolverse correctamente.",
+    "open": "$ disponible para freelance y contratos",
+    "stats": {
+      "projects": "Proyectos realizados",
+      "technologies": "Tecnologías dominadas",
+      "continents": "Continentes atendidos",
+      "focus": "Enfoque en el cliente"
+    }
+  },
+  "services": {
+    "label": "Lo que hago",
+    "title": "Servicios",
+    "subtitle": "Especializado en la intersección entre arquitectura limpia y entrega pragmática.",
+    "web": {
+      "subtitle": "Del concepto a producción",
+      "title": "Aplicaciones Web",
+      "description": "Aplicaciones web full-stack con frameworks modernos. Flujos de datos complejos, funcionalidades en tiempo real, sistemas de autenticación y arquitecturas escalables que crecen con tu negocio.",
+      "features": ["Next.js / React / Vue", "Node.js / Spring Boot / FastAPI", "Bases de datos SQL & NoSQL", "APIs REST y event-driven"]
+    },
+    "ecommerce": {
+      "subtitle": "Vende a gran escala",
+      "title": "Sistemas E-commerce",
+      "description": "Plataformas e-commerce personalizadas con procesamiento de pagos, gestión de inventario, flujos de pedidos y el rendimiento necesario para aguantar picos de tráfico sin caídas.",
+      "features": ["Stripe / integraciones de pago", "Gestión de inventario y pedidos", "Storefronts personalizados", "Analíticas y reportes"]
+    },
+    "automation": {
+      "subtitle": "Sistemas que se comunican",
+      "title": "Automatizaciones e Integraciones",
+      "description": "Conecta tus herramientas existentes y automatiza flujos de trabajo repetitivos. Desde microservicios con Kafka hasta simples bridges de API — diseñado para adaptarse a tu stack, no reemplazarlo.",
+      "features": ["Pipelines event-driven", "Integraciones con APIs de terceros", "Jobs y workers programados", "Microservicios y SOA"]
+    }
+  },
+  "projects": {
+    "label": "Trabajos",
+    "title": "Proyectos Destacados",
+    "subtitle": "Una selección de sistemas, productos y experimentos.",
+    "code": "Código",
+    "live": "Demo en vivo"
+  },
+  "stack": {
+    "label": "Tecnología",
+    "title": "Mi Stack",
+    "description": "Herramientas y tecnologías que uso para construir software listo para producción."
+  },
+  "contact": {
+    "label": "Contacto",
+    "headline": "Construyamos <accent>algo</accent> grande juntos.",
+    "description": "Actualmente estoy disponible para proyectos freelance y consultoría. Ya sea que necesites un producto completo o un sistema integrado — hablemos.",
+    "copy_hint": "Copiar email",
+    "copied": "¡Copiado!",
+    "linkedin": "LinkedIn",
+    "footer": "Construido con Next.js & ♥"
+  },
+  "cv": {
+    "label": "Curriculum Vitae",
+    "hint": "Mueve el mouse para inclinar · Clic para voltear",
+    "flip": "Voltear página",
+    "unflip": "Ver anverso",
+    "scroll_down": "Bajar"
+  }
+}

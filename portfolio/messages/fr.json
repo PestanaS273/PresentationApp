@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "about": "À propos",
+    "services": "Services",
+    "projects": "Projets",
+    "stack": "Stack",
+    "contact": "Contact",
+    "cv": "CV",
+    "hire": "Me recruter",
+    "back": "← Portfolio"
+  },
+  "hero": {
+    "badge": "Disponible pour de nouveaux projets",
+    "current_role": "Ingénieur Systèmes @ Disneyland Paris",
+    "roles": ["Architecte Backend", "Développeur Full-Stack", "Intégrateur de Systèmes", "Développeur E-commerce"],
+    "description": "Je construis des systèmes web complexes, des backends scalables et des automatisations intelligentes qui transforment les idées en produits fiables.",
+    "cta_projects": "Voir les projets",
+    "cta_contact": "Me contacter",
+    "scroll": "Défiler"
+  },
+  "about": {
+    "label": "À propos",
+    "headline": "Je ne construis pas des <accent>pages</accent>. Je construis des <muted>systèmes</muted>.",
+    "bio1": "Fort d'une solide expérience en architecture backend, systèmes event-driven et développement full-stack, j'aide les entreprises à construire des logiciels qui passent vraiment à l'échelle — de la base de données à l'interface.",
+    "bio2": "Qu'il s'agisse d'une plateforme de microservices traitant des milliers d'événements, d'un système e-commerce sur mesure ou d'une automatisation qui fait gagner 20h par semaine — je traite chaque projet comme un problème d'ingénierie à résoudre correctement.",
+    "open": "$ disponible pour du freelance et des contrats",
+    "stats": {
+      "projects": "Projets réalisés",
+      "technologies": "Technologies maîtrisées",
+      "continents": "Continents couverts",
+      "focus": "Orienté client"
+    }
+  },
+  "services": {
+    "label": "Ce que je fais",
+    "title": "Services",
+    "subtitle": "Spécialisé à l'intersection d'une architecture propre et d'une livraison pragmatique.",
+    "web": {
+      "subtitle": "Du concept à la production",
+      "title": "Applications Web",
+      "description": "Applications web full-stack avec des frameworks modernes. Flux de données complexes, fonctionnalités temps réel, systèmes d'authentification et architectures scalables qui évoluent avec votre activité.",
+      "features": ["Next.js / React / Vue", "Node.js / Spring Boot / FastAPI", "Bases SQL & NoSQL", "APIs REST & event-driven"]
+    },
+    "ecommerce": {
+      "subtitle": "Vendez à grande échelle",
+      "title": "Systèmes E-commerce",
+      "description": "Plateformes e-commerce sur mesure avec traitement des paiements, gestion des stocks, flux de commandes et la performance nécessaire pour absorber les pics de trafic sans défaillance.",
+      "features": ["Stripe / intégrations paiement", "Gestion stocks & commandes", "Storefronts personnalisés", "Analytiques & reporting"]
+    },
+    "automation": {
+      "subtitle": "Des systèmes qui communiquent",
+      "title": "Automatisations & Intégrations",
+      "description": "Connectez vos outils existants et automatisez les workflows répétitifs. Des microservices pilotés par Kafka aux simples bridges API — conçu pour s'adapter à votre stack, pas le remplacer.",
+      "features": ["Pipelines event-driven", "Intégrations API tierces", "Jobs & workers planifiés", "Microservices & SOA"]
+    }
+  },
+  "projects": {
+    "label": "Réalisations",
+    "title": "Projets Sélectionnés",
+    "subtitle": "Une sélection de systèmes, produits et expérimentations.",
+    "code": "Code",
+    "live": "Démo live"
+  },
+  "stack": {
+    "label": "Technologies",
+    "title": "Mon Stack",
+    "description": "Outils et technologies que j'utilise pour construire des logiciels prêts pour la production."
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Construisons <accent>quelque chose</accent> de grand ensemble.",
+    "description": "Je suis actuellement disponible pour des projets freelance et du consulting. Que vous ayez besoin d'un produit complet ou d'un système intégré — parlons-en.",
+    "copy_hint": "Copier l'email",
+    "copied": "Copié !",
+    "linkedin": "LinkedIn",
+    "footer": "Construit avec Next.js & ♥"
+  },
+  "cv": {
+    "label": "Curriculum Vitae",
+    "hint": "Survolez pour incliner · Cliquez pour retourner",
+    "flip": "Retourner la page",
+    "unflip": "Voir le recto",
+    "scroll_down": "Bas de page"
+  }
+}

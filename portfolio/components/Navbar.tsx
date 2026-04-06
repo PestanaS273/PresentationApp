@@ -4,20 +4,23 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const hashLinks = [
-  { label: 'About',    href: '#about'    },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Stack',    href: '#stack'    },
-  { label: 'Contact',  href: '#contact'  },
-]
+import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === '/'
+  const { t } = useLanguage()
+
+  const hashLinks = [
+    { key: 'nav.about',    href: '#about'    },
+    { key: 'nav.services', href: '#services' },
+    { key: 'nav.projects', href: '#projects' },
+    { key: 'nav.stack',    href: '#stack'    },
+    { key: 'nav.contact',  href: '#contact'  },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -46,14 +49,14 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-display font-800 text-xl tracking-tight gradient-text cursor-pointer"
+          className="text-xl tracking-tight gradient-text cursor-pointer font-black"
           style={{ fontFamily: 'var(--font-outfit)' }}
         >
           pestana<span className="text-white/30">.</span>dev
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {isHome
             ? hashLinks.map((link) => (
                 <button
@@ -62,7 +65,7 @@ export default function Navbar() {
                   className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 cursor-pointer tracking-wide"
                   style={{ fontFamily: 'var(--font-inter)' }}
                 >
-                  {link.label}
+                  {t(link.key)}
                 </button>
               ))
             : (
@@ -71,7 +74,7 @@ export default function Navbar() {
                   className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 tracking-wide"
                   style={{ fontFamily: 'var(--font-inter)' }}
                 >
-                  ← Portfolio
+                  {t('nav.back')}
                 </Link>
               )}
           <Link
@@ -79,13 +82,15 @@ export default function Navbar() {
             className="text-sm text-[#8A8F98] hover:text-white transition-colors duration-200 tracking-wide"
             style={{ fontFamily: 'var(--font-inter)' }}
           >
-            CV
+            {t('nav.cv')}
           </Link>
+          <LanguageSwitcher />
           <button
-            onClick={() => isHome ? handleNav('#contact') : window.location.href = '/#contact'}
+            onClick={() => isHome ? handleNav('#contact') : (window.location.href = '/#contact')}
             className="text-sm px-5 py-2 rounded-full border border-[rgba(108,99,255,0.5)] text-[#6C63FF] hover:bg-[rgba(108,99,255,0.1)] transition-all duration-200 cursor-pointer"
+            style={{ fontFamily: 'var(--font-outfit)' }}
           >
-            Hire me
+            {t('nav.hire')}
           </button>
         </nav>
 
@@ -95,21 +100,9 @@ export default function Navbar() {
           className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
           aria-label="Toggle menu"
         >
-          <motion.span
-            animate={{ rotate: open ? 45 : 0, y: open ? 8 : 0 }}
-            className="block w-5 h-px bg-white origin-center"
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            animate={{ opacity: open ? 0 : 1 }}
-            className="block w-5 h-px bg-white"
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            animate={{ rotate: open ? -45 : 0, y: open ? -8 : 0 }}
-            className="block w-5 h-px bg-white origin-center"
-            transition={{ duration: 0.3 }}
-          />
+          <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 8 : 0 }} className="block w-5 h-px bg-white origin-center" transition={{ duration: 0.3 }} />
+          <motion.span animate={{ opacity: open ? 0 : 1 }} className="block w-5 h-px bg-white" transition={{ duration: 0.3 }} />
+          <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -8 : 0 }} className="block w-5 h-px bg-white origin-center" transition={{ duration: 0.3 }} />
         </button>
       </div>
 
@@ -132,32 +125,26 @@ export default function Navbar() {
                       className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors cursor-pointer"
                       style={{ fontFamily: 'var(--font-outfit)' }}
                     >
-                      {link.label}
+                      {t(link.key)}
                     </button>
                   ))
                 : (
-                    <Link
-                      href="/"
-                      onClick={() => setOpen(false)}
-                      className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors"
-                      style={{ fontFamily: 'var(--font-outfit)' }}
-                    >
-                      ← Portfolio
+                    <Link href="/" onClick={() => setOpen(false)} className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-outfit)' }}>
+                      {t('nav.back')}
                     </Link>
                   )}
-              <Link
-                href="/cv"
-                onClick={() => setOpen(false)}
-                className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors"
+              <Link href="/cv" onClick={() => setOpen(false)} className="text-left text-lg text-[#EDEDEF] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-outfit)' }}>
+                {t('nav.cv')}
+              </Link>
+              <div className="py-1">
+                <LanguageSwitcher />
+              </div>
+              <button
+                onClick={() => isHome ? handleNav('#contact') : (window.location.href = '/#contact')}
+                className="mt-2 text-center py-3 rounded-full border border-[rgba(108,99,255,0.5)] text-[#6C63FF] cursor-pointer"
                 style={{ fontFamily: 'var(--font-outfit)' }}
               >
-                CV
-              </Link>
-              <button
-                onClick={() => isHome ? handleNav('#contact') : window.location.href = '/#contact'}
-                className="mt-2 text-center py-3 rounded-full border border-[rgba(108,99,255,0.5)] text-[#6C63FF] cursor-pointer"
-              >
-                Hire me
+                {t('nav.hire')}
               </button>
             </nav>
           </motion.div>
