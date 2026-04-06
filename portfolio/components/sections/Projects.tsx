@@ -10,7 +10,6 @@ const projects = [
     id: 'keysolutions',
     title: 'KeySolutions SAC',
     category: 'Web / Corporate',
-    description: 'Production corporate platform for a company selling banking & hospitality solutions — thermal paper, financial cards, POS accessories, and hotel systems. Live in production.',
     tags: ['React', 'Vite', 'Tailwind CSS'],
     accent: '#F59E0B',
     accentRgb: '245, 158, 11',
@@ -22,7 +21,6 @@ const projects = [
     id: 'hck-rental',
     title: 'HCK Rental',
     category: 'Web / Frontend',
-    description: 'Modern corporate site for an events company. Clean design, fast performance, deployed on Vercel.',
     tags: ['React', 'Vite', 'Tailwind CSS', 'Python'],
     accent: '#FF6B6B',
     accentRgb: '255, 107, 107',
@@ -35,7 +33,6 @@ const projects = [
     id: 'propertystake',
     title: 'PropertyStake',
     category: 'Backend / Systems',
-    description: 'Fractional property investment platform. Investors buy property shares and receive monthly passive income via event-driven microservices and scheduled jobs.',
     tags: ['Node.js', 'Apache Kafka', 'MySQL', 'Stripe', 'Docker', 'Node-Cron'],
     accent: '#6C63FF',
     accentRgb: '108, 99, 255',
@@ -47,7 +44,6 @@ const projects = [
     id: 'advancedefrei',
     title: 'AdvancedEFREI',
     category: 'Fullstack / DevOps',
-    description: 'University feedback system with multilingual support (ES, EN, FR, JP), RBAC permissions, Excel processing via Python, and full Kubernetes orchestration.',
     tags: ['Vue.js', 'Spring Boot', 'FastAPI', 'MySQL', 'Kubernetes', 'Docker'],
     accent: '#00D4FF',
     accentRgb: '0, 212, 255',
@@ -59,7 +55,6 @@ const projects = [
     id: 'functional-graphs',
     title: 'Functional Graphs',
     category: 'Library / FP',
-    description: 'Pure functional graph library in Scala/ZIO. DFS, BFS, Dijkstra, Floyd-Warshall, topological sort and cycle detection using tail recursion and pattern matching.',
     tags: ['Scala', 'ZIO', 'SBT'],
     accent: '#A78BFA',
     accentRgb: '167, 139, 250',
@@ -71,7 +66,6 @@ const projects = [
     id: 'mlproject',
     title: 'MLProject',
     category: 'AI / Web',
-    description: 'Multi-LLM news analyzer. Users bring their own OpenAI and Perplexity API keys for real-time news summarization and contextual insights.',
     tags: ['Vue.js', 'Vite', 'OpenAI API', 'Perplexity'],
     accent: '#34D399',
     accentRgb: '52, 211, 153',
@@ -83,7 +77,6 @@ const projects = [
     id: 'tetris',
     title: 'Tetris',
     category: 'Game Dev',
-    description: 'Complete Tetris clone with modular architecture. Tetromino logic, game loop, settings — all cleanly separated.',
     tags: ['Python', 'Pygame'],
     accent: '#F59E0B',
     accentRgb: '245, 158, 11',
@@ -144,7 +137,7 @@ function ProjectCard({
       </h3>
 
       <p className={`text-[#8A8F98] leading-relaxed mb-6 ${isLarge ? 'text-base' : 'text-sm'}`} style={{ fontFamily: 'var(--font-inter)' }}>
-        {project.description}
+        {t(`projects.descriptions.${project.id}`)}
       </p>
 
       <div className="flex flex-wrap gap-2 mb-6">

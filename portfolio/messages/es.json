@@ -59,7 +59,16 @@
     "title": "Proyectos Destacados",
     "subtitle": "Una selección de sistemas, productos y experimentos.",
     "code": "Código",
-    "live": "Demo en vivo"
+    "live": "Demo en vivo",
+    "descriptions": {
+      "keysolutions": "Plataforma corporativa en producción para una empresa que vende soluciones bancarias y hoteleras — papel térmico, tarjetas financieras, accesorios POS y sistemas para hoteles.",
+      "hck-rental": "Sitio corporativo moderno para una empresa de eventos. Diseño limpio, alto rendimiento, desplegado en Vercel.",
+      "propertystake": "Plataforma de inversión inmobiliaria fraccionada. Los inversores compran fracciones de propiedades y reciben ingresos pasivos mensuales mediante microservicios event-driven.",
+      "advancedefrei": "Sistema de feedback universitario con soporte multiidioma (ES, EN, FR, JP), permisos RBAC, procesamiento de Excel con Python y orquestación completa con Kubernetes.",
+      "functional-graphs": "Librería funcional de grafos en Scala/ZIO. DFS, BFS, Dijkstra, Floyd-Warshall, ordenamiento topológico y detección de ciclos usando recursión de cola.",
+      "mlproject": "Analizador de noticias multi-LLM. Los usuarios traen sus propias claves de OpenAI y Perplexity para resúmenes y análisis en tiempo real.",
+      "tetris": "Clon completo de Tetris con arquitectura modular. Lógica de tetrominos, game loop y configuración — todo claramente separado."
+    }
   },
   "stack": {
     "label": "Tecnología",
@@ -80,6 +89,72 @@
     "hint": "Mueve el mouse para inclinar · Clic para voltear",
     "flip": "Voltear página",
     "unflip": "Ver anverso",
-    "scroll_down": "Bajar"
+    "scroll_down": "Bajar",
+    "sections": {
+      "profile": "Perfil",
+      "experience": "Experiencia Profesional",
+      "education": "Educación",
+      "skills": "Competencias Técnicas",
+      "languages": "Idiomas",
+      "interests": "Intereses"
+    },
+    "profile_text": "Ingeniero de software motivado, especializado en desarrollo Full Stack y DevOps. Apasionado por el diseño y la optimización de aplicaciones. Dominio de metodologías ágiles, automatización de procesos y prácticas modernas de DevOps. Experiencia en entornos colaborativos e internacionales.",
+    "experience": {
+      "disney": {
+        "title": "Ingeniero Fullstack & DevOps",
+        "company": "Disneyland Paris",
+        "period": "2023 – Presente",
+        "items": [
+          "Desarrollo y gestión ágil de aplicaciones a medida — departamento de Espectáculo.",
+          "React.js, Node.js, Java Spring Boot, Python, Docker, Gitlab, Jenkins.",
+          "Automatización de pipelines: extracción de información, procesamiento de imágenes, generación de PDF."
+        ]
+      },
+      "fresenius": {
+        "title": "Desarrollo Analítico",
+        "company": "Fresenius Kabi",
+        "period": "Feb – Abr 2022",
+        "items": [
+          "Investigación aplicada en entorno farmacéutico industrial.",
+          "Proyecto I+D sobre lixiviación de aluminio en contenedores médicos.",
+          "Protocolos experimentales rigurosos y tratamiento estadístico de resultados."
+        ]
+      }
+    },
+    "education": {
+      "engineer": {
+        "title": "Diploma de Ingeniería — Software Engineering",
+        "school": "EFREI Paris",
+        "period": "2025",
+        "items": [
+          "Full Stack Web, Vue, React, Java Spring Boot, SQL/NoSQL, Jenkins, Docker, Kubernetes.",
+          "Proyectos: gestión inmobiliaria, motor IA de reconocimiento de audio, automatización documental, videojuegos."
+        ]
+      },
+      "bachelor": {
+        "title": "Bachelor of Engineering Science",
+        "school": "EFREI Paris",
+        "period": "2023",
+        "items": ["SQL, POO Java, Full Stack Web, Física, VHDL."]
+      },
+      "dut": {
+        "title": "DUT — Ciencia e Ingeniería de Materiales",
+        "school": "Sorbonne Paris Nord",
+        "period": "2022",
+        "items": ["Física, Matemáticas, Probabilidades, Química. Top 5 de la promoción."]
+      }
+    },
+    "skills": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Base de datos",
+      "devops": "DevOps",
+      "frontend_items": ["Vue.js, React.js, Next.js", "TypeScript, Tailwind CSS"],
+      "backend_items": ["Node.js, Java Spring Boot", "Python (FastAPI, scripts)"],
+      "database_items": ["PostgreSQL, MySQL (SQL)", "MongoDB, Neo4J (NoSQL)"],
+      "devops_items": ["Docker, Kubernetes, Terraform", "Jenkins, Gitlab, Argo CD"]
+    },
+    "languages_text": "Español (lengua materna) · Francés (bilingüe) · Inglés (bilingüe)",
+    "interests_text": "Deportes · Música · Videojuegos"
   }
 }
