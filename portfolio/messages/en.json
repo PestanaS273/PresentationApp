@@ -82,7 +82,19 @@
     "copy_hint": "Copy email",
     "copied": "Copied!",
     "linkedin": "LinkedIn",
-    "footer": "Built with Next.js & ♥"
+    "footer": "Built with Next.js & ♥",
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "email": "Email",
+      "email_placeholder": "your@email.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project or idea...",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    }
   },
   "cv": {
     "label": "Curriculum Vitae",
@@ -155,6 +167,11 @@
       "devops_items": ["Docker, Kubernetes, Terraform", "Jenkins, Gitlab, Argo CD"]
     },
     "languages_text": "Spanish (native) · French (bilingual) · English (bilingual)",
-    "interests_text": "Sports · Music · Video Games"
+    "interests_text": "Sports · Music · Video Games",
+    "back": {
+      "tagline": "Full Stack & DevOps Engineer — I build systems that work, scale, and integrate with what you already have.",
+      "technologies": "Technologies",
+      "linkedin_label": "LinkedIn"
+    }
   }
 }

@@ -1,36 +1,46 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import CVLoader from './CVLoader'
 
 const CVPaper = dynamic(() => import('./CVPaper'), { ssr: false })
 const CVBackground = dynamic(() => import('./CVBackground'), { ssr: false })
 
 export default function CVPageClient() {
   const { t } = useLanguage()
+  const [loading, setLoading] = useState(true)
 
   return (
-    <div className="relative min-h-dvh overflow-hidden flex flex-col items-center">
-      <div className="fixed inset-0 z-0">
-        <CVBackground />
-      </div>
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.08) 0%, transparent 70%)' }} />
+    <>
+      {loading && <CVLoader onDone={() => setLoading(false)} />}
 
-      <div className="relative z-10 w-full min-h-dvh flex flex-col items-center justify-start pt-28 pb-20 px-4">
-        <div className="text-center mb-12">
-          <p className="text-xs font-medium tracking-[4px] uppercase text-[#8A8F98] mb-3" style={{ fontFamily: 'var(--font-inter)' }}>
-            {t('cv.label')}
-          </p>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight" style={{ fontFamily: 'var(--font-outfit)' }}>
-            <span className="gradient-text">Sebastian</span>{' '}
-            <span className="text-white">Pestana</span>
-          </h1>
-          <p className="text-[#8A8F98] mt-2 text-sm" style={{ fontFamily: 'var(--font-inter)' }}>
-            {t('cv.hint')}
-          </p>
+      <div
+        className="relative min-h-dvh overflow-hidden flex flex-col items-center"
+        style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.4s ease' }}
+      >
+        <div className="fixed inset-0 z-0">
+          <CVBackground />
         </div>
-        <CVPaper />
+        <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.08) 0%, transparent 70%)' }} />
+
+        <div className="relative z-10 w-full min-h-dvh flex flex-col items-center justify-start pt-28 pb-20 px-4">
+          <div className="text-center mb-12">
+            <p className="text-xs font-medium tracking-[4px] uppercase text-[#8A8F98] mb-3" style={{ fontFamily: 'var(--font-inter)' }}>
+              {t('cv.label')}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight" style={{ fontFamily: 'var(--font-outfit)' }}>
+              <span className="gradient-text">Sebastian</span>{' '}
+              <span className="text-white">Pestana</span>
+            </h1>
+            <p className="text-[#8A8F98] mt-2 text-sm" style={{ fontFamily: 'var(--font-inter)' }}>
+              {t('cv.hint')}
+            </p>
+          </div>
+          <CVPaper />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

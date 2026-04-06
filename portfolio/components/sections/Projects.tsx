@@ -177,24 +177,42 @@ export default function Projects() {
   return (
     <section id="projects" ref={ref} className="section-padding relative">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12"
-        >
-          <p className="text-xs font-medium tracking-[4px] uppercase text-[#8A8F98] mb-4" style={{ fontFamily: 'var(--font-inter)' }}>
-            {t('projects.label')}
-          </p>
-          <div className="flex items-end justify-between flex-wrap gap-4">
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight" style={{ fontFamily: 'var(--font-outfit)' }}>
-              {t('projects.title')}
-            </h2>
-            <p className="text-[#8A8F98] text-sm max-w-xs" style={{ fontFamily: 'var(--font-inter)' }}>
-              {t('projects.subtitle')}
-            </p>
+        <div className="mb-12">
+          {/* Label clip-path reveal */}
+          <div style={{ overflow: 'hidden' }}>
+            <motion.p
+              initial={{ y: '110%' }}
+              animate={inView ? { y: '0%' } : {}}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xs font-medium tracking-[4px] uppercase text-[#8A8F98] mb-4"
+              style={{ fontFamily: 'var(--font-inter)' }}
+            >
+              {t('projects.label')}
+            </motion.p>
           </div>
-        </motion.div>
+          <div className="flex items-end justify-between flex-wrap gap-4">
+            <div style={{ overflow: 'hidden' }}>
+              <motion.h2
+                initial={{ y: '100%', opacity: 0 }}
+                animate={inView ? { y: '0%', opacity: 1 } : {}}
+                transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl md:text-5xl font-black text-white tracking-tight"
+                style={{ fontFamily: 'var(--font-outfit)' }}
+              >
+                {t('projects.title')}
+              </motion.h2>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[#8A8F98] text-sm max-w-xs"
+              style={{ fontFamily: 'var(--font-inter)' }}
+            >
+              {t('projects.subtitle')}
+            </motion.p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {projects.map((p, i) => (

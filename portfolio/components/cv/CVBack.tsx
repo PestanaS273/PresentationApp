@@ -1,9 +1,18 @@
+'use client'
+
+import QRCode from 'react-qr-code'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+const LINKEDIN = 'https://www.linkedin.com/in/pestanasm'
+
+const skills = [
+  'React', 'Vue.js', 'Next.js', 'Node.js', 'Java', 'Spring Boot',
+  'Python', 'FastAPI', 'Docker', 'Kubernetes', 'PostgreSQL', 'MySQL',
+  'MongoDB', 'Git', 'Jenkins', 'Kafka', 'Terraform', 'TypeScript',
+]
+
 export default function CVBack() {
-  const skills = [
-    'React', 'Vue.js', 'Next.js', 'Node.js', 'Java', 'Spring Boot',
-    'Python', 'FastAPI', 'Docker', 'Kubernetes', 'PostgreSQL', 'MySQL',
-    'MongoDB', 'Git', 'Jenkins', 'Kafka', 'Terraform', 'TypeScript',
-  ]
+  const { t } = useLanguage()
 
   return (
     <div
@@ -81,8 +90,7 @@ export default function CVBack() {
             margin: 0,
           }}
         >
-          Ingénieur Full Stack & DevOps — je construis des systèmes qui fonctionnent,
-          évoluent, et s&apos;intègrent avec l&apos;existant.
+          {t('cv.back.tagline')}
         </p>
 
         {/* Accent line */}
@@ -97,43 +105,78 @@ export default function CVBack() {
         />
       </div>
 
-      {/* Middle: tech skills grid */}
-      <div style={{ marginTop: '40px' }}>
-        <p
-          style={{
-            fontSize: '10px',
-            letterSpacing: '3px',
-            textTransform: 'uppercase',
-            color: '#555',
-            marginBottom: '14px',
-            fontWeight: 600,
-          }}
-        >
-          Technologies
-        </p>
+      {/* Middle: tech skills grid + QR */}
+      <div style={{ marginTop: '40px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
+        <div style={{ flex: 1 }}>
+          <p
+            style={{
+              fontSize: '10px',
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              color: '#555',
+              marginBottom: '14px',
+              fontWeight: 600,
+            }}
+          >
+            {t('cv.back.technologies')}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {skills.map((s, i) => (
+              <span
+                key={s}
+                style={{
+                  fontSize: '11px',
+                  padding: '4px 10px',
+                  borderRadius: '20px',
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  color: i % 3 === 0 ? '#6C63FF' : i % 3 === 1 ? '#00D4FF' : '#8A8F98',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* QR Code — LinkedIn */}
         <div
           style={{
             display: 'flex',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: '8px',
+            flexShrink: 0,
           }}
         >
-          {skills.map((s, i) => (
-            <span
-              key={s}
-              style={{
-                fontSize: '11px',
-                padding: '4px 10px',
-                borderRadius: '20px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                color: i % 3 === 0 ? '#6C63FF' : i % 3 === 1 ? '#00D4FF' : '#8A8F98',
-                fontFamily: 'var(--font-mono)',
-              }}
-            >
-              {s}
-            </span>
-          ))}
+          <div
+            style={{
+              padding: '10px',
+              background: '#fff',
+              borderRadius: '10px',
+              lineHeight: 0,
+            }}
+          >
+            <QRCode
+              value={LINKEDIN}
+              size={80}
+              bgColor="#ffffff"
+              fgColor="#0a0a12"
+              level="M"
+            />
+          </div>
+          <span
+            style={{
+              fontSize: '9px',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: '#555',
+              fontWeight: 600,
+            }}
+          >
+            {t('cv.back.linkedin_label')}
+          </span>
         </div>
       </div>
 

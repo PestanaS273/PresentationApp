@@ -162,7 +162,13 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* ─── Cursor custom ─────────────────────────────────────────── */
+/* ─── Custom cursor (desktop only) ─────────────────────────── */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
 .cursor-glow {
   position: absolute;
   width: 300px;

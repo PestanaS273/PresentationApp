@@ -3,6 +3,7 @@ import { Outfit, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
 import Navbar from '@/components/Navbar'
+import Cursor from '@/components/Cursor'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const outfit = Outfit({
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body>
         <LanguageProvider>
+          <Cursor />
           <SmoothScroll>
             <Navbar />
             {children}
